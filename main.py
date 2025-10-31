@@ -44,7 +44,7 @@ class Card(db.Model):
 def login():
         error = ''
         if request.method == 'POST':
-            form_login = request.form['email']
+            form_email = request.form['email']
             form_password = request.form['password']
             
             # Zadanie #4. Wdrożyć autoryzację
@@ -60,7 +60,7 @@ def login():
 @app.route('/reg', methods=['GET','POST'])
 def reg():
     if request.method == 'POST':
-        login= request.form['email']
+        email= request.form['email']
         password = request.form['password']
         
         # Zadanie #3. Zadbaj o to, aby dane użytkownika zostały zapisane w bazie danych

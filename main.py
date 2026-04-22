@@ -13,13 +13,15 @@ db = SQLAlchemy(app )
 
 #Zadanie nr 1. Utwórz tabelę DB
 
+class Card(db.Model):
+    id = db.Column(db.Intger, primary_key = True)
+    title = db.Column(db.String(100), nullable = False)
+    subtitle = db.Column(db.String(100), nullable = False)
+    text = db.Column(db.Text, nullable = False)
+    user_email = db.Column(db.String(100), nullable = False)
 
-
-
-
-
-
-
+    def __repr__(self):
+        return f'<Card {self.id}>'  
 
 
 
@@ -57,8 +59,9 @@ def form_create():
         text =  request.form['text']
 
         #Zadanie #2. Stwórz sposób przechowywania danych w bazie danych
-        
-
+        card = Card(title=title subtilte=subtitle, text=text)
+        db.sessions.add(card)
+        db.sessions.commit()
 
 
 

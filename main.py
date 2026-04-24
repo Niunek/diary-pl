@@ -29,6 +29,7 @@ class Card(db.Model):
 @app.route('/')
 def index():
     # Wyświetlanie obiektów Bazy
+    Card.query.order_by(Card.id).all()
     # Assignment #2. Display the objects from the DB in index.html
     
 
@@ -41,7 +42,7 @@ def index():
 @app.route('/card/<int:id>')
 def card(id):
     #Zadanie #2. Wyświetl właściwą kartę według jej identyfikatora
-    
+    card = Card.query.get(id)
 
     return render_template('card.html', card=card)
 
@@ -59,7 +60,7 @@ def form_create():
         text =  request.form['text']
 
         #Zadanie #2. Stwórz sposób przechowywania danych w bazie danych
-        card = Card(title=title subtilte=subtitle, text=text)
+        card = Card(title = title, subtilte = subtitle, text = text)
         db.sessions.add(card)
         db.sessions.commit()
 
